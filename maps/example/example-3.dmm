@@ -16,7 +16,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)
 "e" = (
-/obj/machinery/light{
+/obj/machinery/light/spot{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
@@ -41,9 +41,8 @@
 /turf/space,
 /area/space)
 "j" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+/obj/machinery/light/spot{
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled,
@@ -77,9 +76,8 @@
 /area/maintenance/fsmaint2)
 "p" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+/obj/machinery/light/spot{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)
@@ -135,9 +133,8 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)
 "x" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+/obj/machinery/light/spot{
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled,
@@ -171,7 +168,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)
 "B" = (
-/obj/machinery/light,
+/obj/machinery/light/spot,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)

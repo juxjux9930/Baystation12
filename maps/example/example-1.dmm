@@ -9,22 +9,20 @@
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "d" = (
-/obj/machinery/light{
+/obj/machinery/light/spot{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "e" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+/obj/machinery/light/spot{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "f" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+/obj/machinery/light/spot{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/constructionsite)
@@ -58,7 +56,9 @@
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "k" = (
-/obj/machinery/light,
+/obj/machinery/light/spot{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "l" = (
@@ -230,7 +230,9 @@
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "P" = (
-/obj/machinery/light,
+/obj/machinery/light/spot{
+	dir = 6
+	},
 /obj/machinery/telecomms/processor/map_preset/example,
 /turf/simulated/floor/tiled,
 /area/constructionsite)
@@ -259,6 +261,16 @@
 /area/constructionsite)
 "W" = (
 /obj/machinery/telecomms/receiver/map_preset/example,
+/turf/simulated/floor/tiled,
+/area/constructionsite)
+"X" = (
+/obj/machinery/acting/changer,
+/turf/simulated/floor/tiled,
+/area/constructionsite)
+"Y" = (
+/obj/machinery/light_switch{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 
@@ -887,11 +899,11 @@ a
 b
 c
 c
-c
+u
 e
 c
 c
-u
+c
 c
 c
 e
@@ -931,7 +943,7 @@ c
 c
 c
 c
-c
+X
 b
 a
 a
@@ -965,7 +977,7 @@ c
 t
 t
 t
-c
+Y
 b
 a
 a
