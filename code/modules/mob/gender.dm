@@ -25,10 +25,11 @@ var/global/list/gender_datums = list()
 
 /datum/gender/plural
 	key  = PLURAL
-	formal_term = "other"
+	formal_term = "neutral"
 
 /datum/gender/male
 	key  = MALE
+	formal_term = "masculine"
 
 	He   = "He"
 	he   = "he"
@@ -42,6 +43,7 @@ var/global/list/gender_datums = list()
 
 /datum/gender/female
 	key  = FEMALE
+	formal_term = "feminine"
 
 	He   = "She"
 	he   = "she"
