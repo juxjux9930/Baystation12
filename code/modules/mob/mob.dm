@@ -115,6 +115,12 @@
 			M.show_message(self_message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
 			continue
 
+		if((M.faction != src.faction) && !(isghost(M)))
+			for(var/datum/pronouns/P in pronoun_datums)
+				mob_message = replacetext(mob_message, initial(P.his), "their")
+				mob_message = replacetext(mob_message, initial(P.him), "them")
+				mob_message = replacetext(mob_message, initial(P.self), "themselves")
+
 		if((!M.is_blind() && M.see_invisible >= src.invisibility) || narrate)
 			M.show_message(mob_message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
 			continue
@@ -149,6 +155,12 @@
 			if(ghost_skip_message(M))
 				continue
 			mob_message = add_ghost_track(mob_message, M)
+
+		if((M.faction != src.faction) && !(isghost(M)))
+			for(var/datum/pronouns/P in pronoun_datums)
+				mob_message = replacetext(mob_message, initial(P.his), "their")
+				mob_message = replacetext(mob_message, initial(P.him), "them")
+				mob_message = replacetext(mob_message, initial(P.self), "themselves")
 
 		if(self_message && M == src)
 			M.show_message(self_message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
@@ -672,8 +684,17 @@
 /mob/proc/is_ready()
 	return client && !!mind
 
-/mob/proc/get_gender()
-	return gender
+
+/mob/choose_from_pronouns()
+	if(!pronouns)
+		var/datum/gender/G = gender_datums[src.gender]
+		return G
+	else
+		var/datum/pronouns/P = pronoun_datums[src.pronouns]
+		if(P.types != null)
+			P = pronoun_datums[pick(P.types)]
+		return P
+
 
 /mob/proc/see(message)
 	if(!is_active())

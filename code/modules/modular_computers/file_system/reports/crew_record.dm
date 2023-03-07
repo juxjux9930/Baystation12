@@ -48,12 +48,12 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 	set_name(H ? H.real_name : "Unset")
 	set_formal_name(formal_name)
 	set_job(H ? GetAssignment(H) : "Unset")
-	var/gender_term = "Unset"
+	var/pronouns = "Unset"
 	if(H)
-		var/datum/gender/G = gender_datums[H.get_sex()]
-		if(G)
-			gender_term = gender2text(G.formal_term)
-	set_sex(gender_term)
+		var/datum/pronouns/P = H.choose_from_pronouns()
+		if(P)
+			pronouns = gender2text(P.formal_term)
+	set_sex(pronouns)
 	set_age(H ? H.age : 30)
 	set_status(GLOB.default_physical_status)
 	set_species(H ? H.get_species() : SPECIES_HUMAN)
@@ -197,7 +197,7 @@ KEY.set_access(ACCESS, ACCESS_EDIT || ACCESS || access_bridge)}
 FIELD_SHORT("Name", name, null, access_change_ids)
 FIELD_SHORT("Formal Name", formal_name, null, access_change_ids)
 FIELD_SHORT("Job", job, null, access_change_ids)
-FIELD_LIST("Sex", sex, record_genders(), null, access_change_ids)
+FIELD_LIST("AGAB", sex, record_genders(), null, access_change_ids)
 FIELD_NUM("Age", age, null, access_change_ids)
 FIELD_LIST_EDIT("Status", status, GLOB.physical_statuses, null, access_medical)
 

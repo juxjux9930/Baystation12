@@ -136,7 +136,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<b>Species</b> [BTN("show_species", "Info")]"
 	. += "<br />[TBTN("set_species", mob_species.name, "Selected")]"
 	. += "<br /><br /><b>Body</b> [BTN("random", "Randomize")]"
-	. += "<br />[TBTN("gender", gender2text(pref.gender), "Bodytype")]"
+	. += "<br />[TBTN("gender", pref.gender, "Bodytype")]"
 	. += "<br />[TBTN("pronouns", pref.pronouns, "Pronouns")]"
 	. += "<br />[TBTN("age", pref.age, "Age")]"
 	. += "<br />[TBTN("blood_type", pref.b_type, "Blood Type")]"
@@ -245,8 +245,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TOPIC_REFRESH
 
 	else if(href_list["gender"])
-		var/new_gender = input(user, "Choose your character's bodytype:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.gender) as null|anything in mob_species.genders
 		mob_species = all_species[pref.species]
+		var/new_gender = input(user, "Choose your character's bodytype:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.gender) as null|anything in mob_species.genders
 		if(new_gender && CanUseTopic(user) && (new_gender in mob_species.genders))
 			pref.gender = new_gender
 			if(!(pref.facial_hair_style in mob_species.get_facial_hair_styles(pref.gender)))

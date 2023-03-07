@@ -520,7 +520,7 @@
 	special_role =    null
 	role_alt_title =  null
 	assigned_job =    null
-	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
+	faction =		  MOB_FACTION_NEUTRAL
 	changeling =      null
 	initial_account = null
 	objectives =      list()
