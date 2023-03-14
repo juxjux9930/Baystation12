@@ -821,7 +821,7 @@
 		else
 			gender = NEUTER
 
-	var/new_pronouns = input("Please select pronouns.", "Character Generation", pronouns) as null|anything in pronoun_datums
+	var/new_pronouns = input("Please select pronouns.", "Character Generation", pronouns) as null|anything in GLOB.pronouns.by_key
 	if(new_pronouns)
 		pronouns = new_pronouns
 

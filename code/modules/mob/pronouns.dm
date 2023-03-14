@@ -1,12 +1,3 @@
-
-var/global/list/pronoun_datums = list()
-
-/hook/startup/proc/populate_pronoun_datum_list()
-	for(var/type in subtypesof(/datum/pronouns))
-		var/datum/pronouns/P = new type
-		pronoun_datums[P.key] = P
-	return 1
-
 /datum/pronouns
 	var/key
 	var/formal_term
@@ -77,3 +68,20 @@ var/global/list/pronoun_datums = list()
 	is   = "is"
 	does = "does"
 	self = "itself"
+
+
+/datum/pronouns_manager
+	var/static/list/datum/pronouns/instances = list()
+	var/static/list/datum/pronouns/by_key = list()
+
+
+/datum/pronouns_manager/New()
+	instances.Cut()
+	by_key.Cut()
+	for (var/datum/pronouns/pronouns as anything in subtypesof(/datum/pronouns))
+		pronouns = new pronouns
+		instances += pronouns
+		by_key[pronouns.key] = pronouns
+
+
+GLOBAL_DATUM_INIT(pronouns, /datum/pronouns_manager, new)

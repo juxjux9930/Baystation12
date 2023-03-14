@@ -115,11 +115,11 @@
 			M.show_message(self_message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
 			continue
 
-		if((M.faction != src.faction) && !(isghost(M)))
-			for(var/datum/pronouns/P in pronoun_datums)
-				mob_message = replacetext(mob_message, initial(P.his), "their")
-				mob_message = replacetext(mob_message, initial(P.him), "them")
-				mob_message = replacetext(mob_message, initial(P.self), "themselves")
+		if(faction != M.faction && !isghost(M))
+			for(var/datum/pronouns/entry as anything in GLOB.pronouns.instances)
+				mob_message = replacetext(mob_message, initial(entry.his), "their")
+				mob_message = replacetext(mob_message, initial(entry.him), "them")
+				mob_message = replacetext(mob_message, initial(entry.self), "themselves")
 
 		if((!M.is_blind() && M.see_invisible >= src.invisibility) || narrate)
 			M.show_message(mob_message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
@@ -157,10 +157,10 @@
 			mob_message = add_ghost_track(mob_message, M)
 
 		if((M.faction != src.faction) && !(isghost(M)))
-			for(var/datum/pronouns/P in pronoun_datums)
-				mob_message = replacetext(mob_message, initial(P.his), "their")
-				mob_message = replacetext(mob_message, initial(P.him), "them")
-				mob_message = replacetext(mob_message, initial(P.self), "themselves")
+			for(var/datum/pronouns/entry as anything in GLOB.pronouns.instances)
+				mob_message = replacetext(mob_message, initial(entry.his), "their")
+				mob_message = replacetext(mob_message, initial(entry.him), "them")
+				mob_message = replacetext(mob_message, initial(entry.self), "themselves")
 
 		if(self_message && M == src)
 			M.show_message(self_message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
@@ -687,12 +687,12 @@
 
 /mob/choose_from_pronouns()
 	if(!pronouns)
-		var/datum/gender/G = gender_datums[src.gender]
+		var/datum/gender/G = gender_datums[gender]
 		return G
 	else
-		var/datum/pronouns/P = pronoun_datums[src.pronouns]
-		if(P.types != null)
-			P = pronoun_datums[pick(P.types)]
+		var/datum/pronouns/P = GLOB.pronouns.by_key[pronouns]
+		if(P.types)
+			P = GLOB.pronouns.by_key[pick(P.types)]
 		return P
 
 

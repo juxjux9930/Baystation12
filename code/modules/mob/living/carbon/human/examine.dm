@@ -35,7 +35,7 @@
 
 	var/datum/pronouns/P = choose_from_pronouns()
 	if((skipjumpsuit && skipface) || !(src.faction == user.faction)) //big suits/masks/helmets make it hard to tell their gender
-		P = pronoun_datums[PRONOUNS_THEY_THEM]
+		P = GLOB.pronouns.by_key[PRONOUNS_THEY_THEM]
 	else
 		if(icon)
 			msg += "[icon2html(icon, user)] " //fucking BYOND: this should stop dreamseeker crashing if we -somehow- examine somebody before their icon is generated
